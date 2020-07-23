@@ -16,3 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/athletes', 'AthleteController@index');
+Route::get('/athletes/{athlete}', 'AthleteController@show');
+Route::post('/athletes', 'AthleteController@store');
+
+Route::get('/physicals', 'PhysicalController@index');
+Route::get('/physicals/{physical}', 'PhysicalController@show');
+Route::post('/physicals', 'PhysicalController@store');
+
+//Route::get('/physicals-partial', function () {
+//    return view('physicals.physicals-partial', [
+//        'physicals' => \App\Models\Physical::search(
+//            request('search')
+//        )->get()
+//    ]);
+//});
